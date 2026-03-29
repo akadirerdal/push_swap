@@ -11,12 +11,14 @@
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include <stdlib.h>
 
 typedef struct s_node
 {
-	int	value;
-	int	index;
+	int				value;
+	int				index;
 	struct s_node	*next;
 }	t_node;
 

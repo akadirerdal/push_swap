@@ -25,17 +25,17 @@ int	dublicate(t_node *a, int value)
 t_node	*parse(int argc, char **argv)
 {
 	t_node		*a;
-	int long	val;
+	long		val;
 	int			i;
 
-	i = 0;
+	i = 1;
 	a = NULL;
 	while (i < argc)
 	{
-		if (!is_nuber(argv[i]))
+		if (!isnumber(argv[i]))
 			return (NULL);
 		val = ft_atol(argv[i]);
-		if (val > 2147483647 || -2147483648)
+		if (val > 2147483647 || val < -2147483648)
 			return (NULL);
 		if (dublicate(a, (int)val))
 			return (NULL);

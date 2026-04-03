@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_node
 {
@@ -37,4 +38,15 @@ typedef struct s_counter
 	int	rrr;
 	int	total;
 }	t_counter;
+
+int	isnumber(char *str);
+long	ft_atol(const char *str);
+t_node	*new_node(int value);
+void	add_back(t_node **a, t_node *new);
+t_node	*parse(int argc, char **argv);
+int find_min(t_node *a);
+int get_pos(t_node *a, int min);
+void simple_short(t_node **a, t_node **b);
+int lst_size(t_node *a);
+
 #endif

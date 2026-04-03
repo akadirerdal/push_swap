@@ -16,7 +16,6 @@ void sa(t_node **a, t_counter *counter)
 {
 	t_node *one;
 	t_node *two;
-	t_node *tmp;
 	
 	if(!a || !*a || !(*a)->next)
 		return ;

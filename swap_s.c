@@ -14,9 +14,9 @@
 
 static void	swap_stack(t_node **ab)
 {
-	t_node *one;
-	t_node *two;
-	
+	t_node	*one;
+	t_node	*two;
+
 	if (!ab || !*ab || !(*ab)->next)
 		return ;
 	one = *ab;
@@ -25,11 +25,12 @@ static void	swap_stack(t_node **ab)
 	two->next = one;
 	*ab = two;
 }
+
 void	ss(t_node **a, t_node **b, t_counter *counter)
 {
 	swap_stack(a);
 	swap_stack(b);
-	write(1,"ss\n",3);
+	write(1, "ss\n", 3);
 	if (counter)
 	{
 		counter->ss++;

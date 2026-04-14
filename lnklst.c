@@ -14,40 +14,40 @@
 
 t_node	*new_node(int value)
 {
-    t_node *new_node;
+	t_node	*new_node;
 
-    new_node = malloc(sizeof(t_node));
-    if(!new_node)
-        return (NULL);
-    new_node -> value = value;
-    new_node -> next = NULL;
-    return (new_node);
+	new_node = malloc(sizeof(t_node));
+	if (!new_node)
+		return (NULL);
+	new_node -> value = value;
+	new_node -> next = NULL;
+	return (new_node);
 }
 
-void    add_back(t_node **a, t_node *new)
+void	add_back(t_node **a, t_node *new)
 {
-    t_node *tmp;
+	t_node	*tmp;
 
-    if (!*a)
-    {
-        *a = new;
-        return ;
-    }
-    tmp = *a;
-    while (tmp->next)
-        tmp = tmp->next;
-    tmp->next = new;
+	if (!*a)
+	{
+		*a = new;
+		return ;
+	}
+	tmp = *a;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
 }
 
-int lst_size(t_node *a)
+int	lst_size(t_node *a)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while(a)
-    {
-        i++;
-        a = a->next;
-    }
-    return (i);
+	i = 0;
+	while (a)
+	{
+		i++;
+		a = a->next;
+	}
+	return (i);
 }

@@ -39,14 +39,33 @@ typedef struct s_counter
 	int	total;
 }	t_counter;
 
-int	isnumber(char *str);
+int		isnumber(char *str);
+int		is_sorted(t_node *a);
+void	free_list(t_node *a);
 long	ft_atol(const char *str);
+void	chunk_sort(t_node **a, t_node **b);
 t_node	*new_node(int value);
 void	add_back(t_node **a, t_node *new);
 t_node	*parse(int argc, char **argv);
-int find_min(t_node *a);
-int get_pos(t_node *a, int min);
-void simple_short(t_node **a, t_node **b);
-int lst_size(t_node *a);
+void	chunk_sort(t_node **a, t_node **b);
+int		find_min(t_node *a);
+int		get_pos(t_node *a, int min);
+void	sort_5(t_node **a, t_node **b);
+void	simple_short(t_node **a, t_node **b);
+int		lst_size(t_node *a);
+void	sort_3(t_node **a);
+void	assign_index(t_node *a);
+void	radix_sort(t_node **a, t_node **b);
+void	sa(t_node **a, t_counter *counter);
+void	sb(t_node **b, t_counter *counter);
+void	ss(t_node **a, t_node **b, t_counter *counter);
+void	pa(t_node **a, t_node **b, t_counter *counter);
+void	pb(t_node **a, t_node **b, t_counter *counter);
+void	ra(t_node **a, t_counter *counter);
+void	rb(t_node **b, t_counter *counter);
+void	rr(t_node **a, t_node **b, t_counter *counter);
+void	rra(t_node **a, t_counter *counter);
+void	rrb(t_node **b, t_counter *counter);
+void	rrr(t_node **a, t_node **b, t_counter *counter);
 
 #endif

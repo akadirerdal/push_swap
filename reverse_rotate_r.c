@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-static void swap_reverse_rotate(t_node **ab)
+
+static void	swap_reverse_rotate(t_node **ab)
 {
-	t_node *head;
-	t_node *end;
-	t_node *end2;
-	
+	t_node	*head;
+	t_node	*end;
+	t_node	*end2;
+
 	if (!ab || !*ab || !(*ab)->next)
 		return ;
 	head = *ab;
@@ -29,13 +30,14 @@ static void swap_reverse_rotate(t_node **ab)
 	end2->next = NULL;
 	end->next = head;
 	*ab = end;
-} 
-void rrr(t_node **a, t_node **b, t_counter *counter)
+}
+
+void	rrr(t_node **a, t_node **b, t_counter *counter)
 {
 	swap_reverse_rotate(a);
 	swap_reverse_rotate(b);
-	write(1,"rrr\n",4);
-	if(counter)
+	write(1, "rrr\n", 4);
+	if (counter)
 	{
 		counter->rrr++;
 		counter->total++;

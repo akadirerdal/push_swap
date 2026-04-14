@@ -14,20 +14,20 @@
 
 void	rb(t_node **b, t_counter *counter)
 {
-	t_node *head;
-	t_node *end;
-	
-	if(!b || !*b || !(*b)->next)
+	t_node	*head;
+	t_node	*end;
+
+	if (!b || !*b || !(*b)->next)
 		return ;
 	head = *b;
 	end = *b;
-	while(end->next != NULL)
+	while (end->next != NULL)
 		end = end->next;
 	*b = head->next;
 	end->next = head;
 	head->next = NULL;
-	write(1,"rb\n",3);
-	if(counter)
+	write(1, "rb\n", 3);
+	if (counter)
 	{
 		counter->rb++;
 		counter->total++;

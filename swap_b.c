@@ -13,20 +13,20 @@
 
 #include "push_swap.h"
 
-void sb(t_node **b, t_counter *counter)
+void	sb(t_node **b, t_counter *counter)
 {
-	t_node *one;
-	t_node *two;
-	
-	if(!b || !*b || !(*b)->next)
+	t_node	*one;
+	t_node	*two;
+
+	if (!b || !*b || !(*b)->next)
 		return ;
 	one = *b;
 	two = one->next;
 	one->next = two->next;
 	two->next = one;
 	*b = two;
-	write(1, "sb\n",3);
-	if(counter)
+	write(1, "sb\n", 3);
+	if (counter)
 	{
 		counter->sb++;
 		counter->total++;

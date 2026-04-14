@@ -12,20 +12,20 @@
 
 #include "push_swap.h"
 
-void sa(t_node **a, t_counter *counter)
+void	sa(t_node **a, t_counter *counter)
 {
-	t_node *one;
-	t_node *two;
-	
-	if(!a || !*a || !(*a)->next)
+	t_node	*one;
+	t_node	*two;
+
+	if (!a || !*a || !(*a)->next)
 		return ;
 	one = *a;
 	two = one->next;
 	one->next = two->next;
 	two->next = one;
 	*a = two;
-	write(1, "sa\n",3);
-	if(counter)
+	write(1, "sa\n", 3);
+	if (counter)
 	{
 		counter->sa++;
 		counter->total++;

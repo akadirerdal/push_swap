@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
+#include <stdio.h>
 
 int	dublicate(t_node *a, int value)
 {
@@ -32,6 +33,8 @@ t_node	*parse(int argc, char **argv)
 	a = NULL;
 	while (i < argc)
 	{
+		if (argv[i][0] == '\0')
+			return (NULL);
 		if (!isnumber(argv[i]))
 			return (NULL);
 		val = ft_atol(argv[i]);

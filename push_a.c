@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-void pa(t_node **a, t_node **b, t_counter *counter)
+void	pa(t_node **a, t_node **b, t_counter *counter)
 {
-	t_node *one;
-	t_node *two;
-	
-	if(!b || !*b)
+	t_node	*one;
+	t_node	*two;
+
+	if (!b || !*b)
 		return ;
 	one = *a;
 	two = *b;
@@ -25,7 +25,7 @@ void pa(t_node **a, t_node **b, t_counter *counter)
 	two->next = one;
 	*a = two;
 	write(1,"pa\n", 3);
-	if(counter)
+	if (counter)
 	{
 		counter->pa++;
 		counter->total++;

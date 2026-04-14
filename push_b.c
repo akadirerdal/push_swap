@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-void pb(t_node **a, t_node **b, t_counter *counter)
+void	pb(t_node **a, t_node **b, t_counter *counter)
 {
-	t_node *one;
-	t_node *two;
-	
-	if(!a || !*a)
+	t_node	*one;
+	t_node	*two;
+
+	if (!a || !*a)
 		return ;
 	one = *b;
 	two = *a;
@@ -25,7 +25,7 @@ void pb(t_node **a, t_node **b, t_counter *counter)
 	two->next = one;
 	*b = two;
 	write(1,"pb\n", 3);
-	if(counter)
+	if (counter)
 	{
 		counter->pb++;
 		counter->total++;

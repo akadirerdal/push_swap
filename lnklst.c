@@ -28,6 +28,8 @@ void	add_back(t_node **a, t_node *new)
 {
 	t_node	*tmp;
 
+	if (!a)
+		return ;
 	if (!*a)
 	{
 		*a = new;

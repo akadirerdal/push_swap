@@ -12,12 +12,27 @@
 
 #include "push_swap.h"
 
+
+void	print_list(t_node *a)
+{
+	#include <stdio.h>
+	t_node *curr;
+
+	curr = a;
+	while (curr)
+	{
+		printf("%d\n", curr->value);
+		curr = curr->next;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_node		*a;
 	t_node		*b;
 	t_config	cfg;
 	t_counter	c;
+	int i;
 	int			start;
 	double		disorder;
 
@@ -26,13 +41,17 @@ int	main(int ac, char **av)
 
 	counter_init(&c);
 	b = NULL;
-
+	a = NULL;
 	start = parse_flags(ac, av, &cfg);
 
-	a = init_stack(av + start);
-	if (!a)
-		return (0);
-
+	i = 1;
+	while (av[i])
+	{
+		if (init_stack(av[i], &a))
+			return (1);
+		i++;
+	}
+	print_list(a);
 	assign_index(a);
 
 	if (has_duplicate(a))
@@ -61,7 +80,6 @@ int	main(int ac, char **av)
 
 	if (cfg.bench)
 		print_bench(disorder, cfg.strategy, &c);
-
 	free_stack(a);
 	free_stack(b);
 	return (0);

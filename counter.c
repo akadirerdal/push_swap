@@ -73,29 +73,34 @@ void free_stack(t_node *a)
     }
 }
 
-t_node *init_stack(char **av)
+int		init_stack(char *str, t_node **a)
 {
-	t_node	*a;
 	long	num;
+	char	**res;
 	int		i;
 
-	a = NULL;
+	res = ft_split(str, ' ');
+	if (!res)
+		return (1);
+	// i = 0;
+	// while (res[i])
+	// 	printf("data = %s\n", res[i++]);
 	i = 0;
-	while (av[i])
+	while (res[i])
 	{
-		if (!isnumber(av[i]))
+		if (!isnumber(res[i]))
 		{
 			write(2, "Error\n", 6);
-			exit(1);
+			return (1);
 		}
-		num = ft_atol(av[i]);
+		num = ft_atol(res[i]);
 		if (num > INT_MAX || num < INT_MIN)
 		{
 			write(2, "Error\n", 6);
-			exit(1);
+			return (1);
 		}
-		add_back(&a, new_node((int)num));
+		add_back(a, new_node((int)num));
 		i++;
 	}
-	return (a);
-}
+	return (0);
+}

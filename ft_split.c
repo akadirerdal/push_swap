@@ -85,7 +85,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	str = calloc(sizeof(char *), (wcount(s, c) + 1));
+	str = calloc(sizeof(char *), (wcount(s, c) + 1)); // ft_calloc kullan!!!!
 	if (!str)
 		return (NULL);
 	i = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate_a.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: sukonukc <sukonukc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 04:59:29 by aberdal           #+#    #+#             */
-/*   Updated: 2026/03/04 05:16:15 by aberdal          ###   ########.fr       */
+/*   Updated: 2026/04/23 18:05:54 by sukonukc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

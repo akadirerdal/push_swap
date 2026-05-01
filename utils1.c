@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberdal <aberdal@student.42kocaeli.com.tr>  #+#  +:+       +#+       */
+/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-29 01:12:10 by aberdal           #+#    #+#             */
-/*   Updated: 2026-03-29 01:12:10 by aberdal          ###   ########.fr       */
+/*   Created: 2026/03/29 01:12:10 by aberdal           #+#    #+#             */
+/*   Updated: 2026/05/01 04:50:42 by aberdal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	isnumber(char *str)
@@ -50,4 +51,34 @@ long	ft_atol(const char *str)
 		i++;
 	}
 	return (res * sing);
+}
+
+int	is_sorted(t_node *a)
+{
+	while (a && a->next)
+	{
+		if (a->value > a->next->value)
+			return (0);
+		a = a->next;
+	}
+	return (1);
+}
+int	has_duplicate(t_node *a)
+{
+	t_node	*i;
+	t_node	*j;
+
+	i = a;
+	while (i)
+	{
+		j = i->next;
+		while (j)
+		{
+			if (i->value == j->value)
+				return (1);
+			j = j->next;
+		}
+		i = i->next;
+	}
+	return (0);
 }

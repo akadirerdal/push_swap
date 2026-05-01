@@ -1,0 +1,69 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   adaptive.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/01 05:08:08 by aberdal           #+#    #+#             */
+/*   Updated: 2026/05/01 05:08:08 by aberdal          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	sort_3(t_node **a, t_counter *c)
+{
+	int	first;
+	int	second;
+	int	third;
+
+	first = (*a)->value;
+	second = (*a)->next->value;
+	third = (*a)->next->next->value;
+
+	if (first > second && second < third && first < third)
+		sa(a, c);
+	else if (first > second && second > third)
+	{
+		sa(a, c);
+		rra(a, c);
+	}
+	else if (first > second && second < third && first > third)
+		ra(a, c);
+	else if (first < second && second > third && first < third)
+	{
+		sa(a, c);
+		ra(a, c);
+	}
+	else if (first < second && second > third && first > third)
+		rra(a, c);
+}
+
+void	adaptive_sort(t_node **a, t_node **b, t_counter *c)
+{
+	int		size;
+	double	d;
+
+	size = lst_size(*a);
+	if (size <= 1)
+		return ;
+	if (size == 2)
+	{
+		if ((*a)->value > (*a)->next->value)
+			sa(a, c);
+		return ;
+	}
+	if (size == 3)
+	{
+		sort_3(a, c);
+		return ;
+	}
+	d = compute_disorder(*a);
+	if (d < 0.2)
+		simple_sort(a, b, c);
+	else if (d < 0.5)
+		chunk_sort(a, b, c);
+	else
+		radix_sort(a, b, c);
+}

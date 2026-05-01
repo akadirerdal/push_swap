@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberdal <aberdal@student.42kocaeli.com.tr>  #+#  +:+       +#+       */
+/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-04-12 19:39:44 by aberdal           #+#    #+#             */
-/*   Updated: 2026-04-12 19:39:44 by aberdal          ###   ########.fr       */
+/*   Created: 2026/04/12 19:39:44 by aberdal           #+#    #+#             */
+/*   Updated: 2026/05/01 04:09:21 by aberdal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	*copy_to_array(t_node *a, int size)

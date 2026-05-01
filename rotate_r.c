@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_r.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: sukonukc <sukonukc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 04:39:41 by aberdal           #+#    #+#             */
-/*   Updated: 2026/03/04 04:50:26 by aberdal          ###   ########.fr       */
+/*   Updated: 2026/04/23 18:09:12 by sukonukc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	swap_rotate(t_node **ab)

@@ -3,43 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberdal <aberdal@student.42kocaeli.com.tr>  #+#  +:+       +#+       */
+/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-04-13 21:47:51 by aberdal           #+#    #+#             */
-/*   Updated: 2026-04-13 21:47:51 by aberdal          ###   ########.fr       */
+/*   Created: 2026/04/13 21:47:51 by aberdal           #+#    #+#             */
+/*   Updated: 2026/05/01 05:19:10 by aberdal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	sort_3(t_node **a)
+void	sort_2(t_node **a)
 {
 	int	first;
 	int	second;
-	int	third;
 
 	first = (*a)->value;
 	second = (*a)->next->value;
-	third = (*a)->next->next->value;
 
-	if (first > second && second < third && first < third)
-		sa(a, NULL);
-	else if (first > second && second > third)
+	if (first > second)
 	{
 		sa(a, NULL);
-		rra(a, NULL);
 	}
-	else if (first > second && second < third && first > third)
-		ra(a, NULL);
-	else if (first < second && second > third && first < third)
-	{
-		sa(a, NULL);
-		ra(a, NULL);
-	}
-	else if (first < second && second > third && first > third)
-		rra(a, NULL);
 }
 
-void	sort_5(t_node **a, t_node **b)
+void sort_5(t_node **a, t_node **b, t_counter *c)
 {
 	int	min;
 	int	pos;
@@ -55,7 +42,7 @@ void	sort_5(t_node **a, t_node **b)
 		else
 			rra(a, NULL);
 	}
-	sort_3(a);
+	sort_3(a , c);
 	while (*b)
 		pa(a, b, NULL);
 }

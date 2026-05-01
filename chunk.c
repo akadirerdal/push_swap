@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   chunk.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberdal <aberdal@student.42kocaeli.com.tr>  #+#  +:+       +#+       */
+/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-04-13 23:27:22 by aberdal           #+#    #+#             */
-/*   Updated: 2026-04-13 23:27:22 by aberdal          ###   ########.fr       */
+/*   Created: 2026/04/13 23:27:22 by aberdal           #+#    #+#             */
+/*   Updated: 2026/05/01 02:49:22 by aberdal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	get_max(t_node *b)
@@ -42,7 +43,7 @@ static int	get_pos_max(t_node *b)
 	return (0);
 }
 
-static void	push_chunks(t_node **a, t_node **b, int chunk)
+static void	push_chunks(t_node **a, t_node **b, int chunk, t_counter *c)
 {
 	int	i;
 
@@ -51,23 +52,23 @@ static void	push_chunks(t_node **a, t_node **b, int chunk)
 	{
 		if ((*a)->index <= i)
 		{
-			pb(a, b, NULL);
-			rb(b, NULL);
+			pb(a, b, c);
+			rb(b, c);
 			i++;
 		}
 		else if ((*a)->index <= i + chunk)
 		{
-			pb(a, b, NULL);
+			pb(a, b, c);
 			if (*b && (*b)->next && (*b)->index < (i + chunk / 2))
-				rb(b, NULL);
+				rb(b, c);
 			i++;
 		}
 		else
-			ra(a, NULL);
+			ra(a, c);
 	}
 }
 
-static void	push_back(t_node **a, t_node **b)
+static void	push_back(t_node **a, t_node **b, t_counter *c)
 {
 	int	pos;
 	int	size_b;
@@ -78,19 +79,21 @@ static void	push_back(t_node **a, t_node **b)
 		pos = get_pos_max(*b);
 		size_b = lst_size(*b);
 		if (pos <= size_b / 2)
+		{
 			while (pos-- > 0)
-				rb(b, NULL);
+				rb(b, c);
+		}
 		else
 		{
 			rev = size_b - pos;
 			while (rev-- > 0)
-				rrb(b, NULL);
+				rrb(b, c);
 		}
-		pa(a, b, NULL);
+		pa(a, b, c);
 	}
 }
 
-void	chunk_sort(t_node **a, t_node **b)
+void	chunk_sort(t_node **a, t_node **b, t_counter *c)
 {
 	int	size;
 	int	chunk;
@@ -100,6 +103,6 @@ void	chunk_sort(t_node **a, t_node **b)
 		chunk = 10;
 	else
 		chunk = 23;
-	push_chunks(a, b, chunk);
-	push_back(a, b);
+	push_chunks(a, b, chunk, c);
+	push_back(a, b, c);
 }

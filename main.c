@@ -32,7 +32,6 @@ int	main(int ac, char **av)
 	t_node		*b;
 	t_config	cfg;
 	t_counter	c;
-	int i;
 	int			start;
 	double		disorder;
 
@@ -43,15 +42,13 @@ int	main(int ac, char **av)
 	b = NULL;
 	a = NULL;
 	start = parse_flags(ac, av, &cfg);
-
-	i = 1;
-	while (av[i])
+	while (av[start])
 	{
-		if (init_stack(av[i], &a))
+		if (init_stack(av[start], &a))
 			return (1);
-		i++;
+		start++;
 	}
-	print_list(a);
+	//print_list(a);
 	assign_index(a);
 
 	if (has_duplicate(a))

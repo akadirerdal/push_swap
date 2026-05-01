@@ -82,9 +82,6 @@ int		init_stack(char *str, t_node **a)
 	res = ft_split(str, ' ');
 	if (!res)
 		return (1);
-	// i = 0;
-	// while (res[i])
-	// 	printf("data = %s\n", res[i++]);
 	i = 0;
 	while (res[i])
 	{

@@ -98,23 +98,4 @@ t_node *init_stack(char **av)
 		i++;
 	}
 	return (a);
-}
-
-int get_max_bits(t_node *a)
-{
-    int max;
-    int bits;
-
-    max = 0;
-    while (a)
-    {
-        if (a->index > max)
-            max = a->index;
-        a = a->next;
-    }
-
-    bits = 0;
-    while ((max >> bits) != 0)
-        bits++;
-    return (bits);
-}
+}

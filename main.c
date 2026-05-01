@@ -12,18 +12,6 @@
 
 #include "push_swap.h"
 
-void	free_list(t_node *a)
-{
-	t_node	*tmp;
-
-	while (a)
-	{
-		tmp = a->next;
-		free(a);
-		a = tmp;
-	}
-}
-
 int	main(int ac, char **av)
 {
 	t_node		*a;

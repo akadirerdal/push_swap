@@ -12,20 +12,6 @@
 
 #include "push_swap.h"
 
-void	sort_2(t_node **a)
-{
-	int	first;
-	int	second;
-
-	first = (*a)->value;
-	second = (*a)->next->value;
-
-	if (first > second)
-	{
-		sa(a, NULL);
-	}
-}
-
 void sort_5(t_node **a, t_node **b, t_counter *c)
 {
 	int	min;

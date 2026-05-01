@@ -12,44 +12,6 @@
 
 #include "push_swap.h"
 
-int	dublicate(t_node *a, int value)
-{
-	while (a)
-	{
-		if (a->value == value)
-			return (1);
-		a = a->next;
-	}
-	return (0);
-}
-
-int		parse(char *str, t_node **a)
-{
-	char		**res;
-	long		val;
-	int			i;
-
-	res = ft_split(str, ' ');
-	if (!res)
-		return (1);
-	i = 0;
-	while (res[i])
-	{
-		if (res[i][0] == '\0')
-			return (1);
-		if (!isnumber(res[i]))
-			return (1);
-		val = ft_atol(res[i]);
-		if (val > 2147483647 || val < -2147483648)
-			return (1);
-		if (dublicate(*a, (int)val))
-			return (1);
-		add_back(a, new_node((int)val));
-		i++;
-	}
-	return (0);
-}
-
 int parse_flags(int ac, char **av, t_config *cfg)
 {
     int i;

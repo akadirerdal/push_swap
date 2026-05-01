@@ -42,32 +42,3 @@ int	get_pos(t_node *a, int min)
 	}
 	return (0);
 }
-
-void	simple_short(t_node **a, t_node **b)
-{
-	int	min;
-	int	pos;
-	int	size;
-	int	i;
-
-	while (*a)
-	{
-		min = find_min(*a);
-		pos = get_pos(*a, min);
-		size = lst_size(*a);
-		if (pos <= size / 2)
-		{
-			while (pos-- > 0)
-				ra(a, NULL);
-		}
-		else
-		{
-			i = size - pos;
-			while (i-- > 0)
-				rra(a, NULL);
-		}
-		pb(a, b, NULL);
-	}
-	while (*b)
-		pa(a, b, NULL);
-}

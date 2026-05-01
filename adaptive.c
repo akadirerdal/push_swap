@@ -59,6 +59,11 @@ void	adaptive_sort(t_node **a, t_node **b, t_counter *c)
 		sort_3(a, c);
 		return ;
 	}
+	if (size <= 5)
+	{
+		sort_5(a, b, c);
+		return ;
+	}
 	d = compute_disorder(*a);
 	if (d < 0.2)
 		simple_sort(a, b, c);

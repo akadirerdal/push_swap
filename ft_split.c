@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: sukonukc <sukonukc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 13:32:26 by sukonukc          #+#    #+#             */
-/*   Updated: 2026/05/01 00:49:48 by aberdal          ###   ########.fr       */
+/*   Updated: 2026/05/02 02:47:43 by sukonukc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	str = calloc(sizeof(char *), (wcount(s, c) + 1)); // ft_calloc kullan!!!!
+	str = ft_calloc(sizeof(char *), (wcount(s, c) + 1));
 	if (!str)
 		return (NULL);
 	i = 0;

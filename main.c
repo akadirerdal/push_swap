@@ -12,32 +12,48 @@
 
 #include "push_swap.h"
 
-
-void	print_list(t_node *a)
+void	control(t_node	*a)
 {
-	#include <stdio.h>
-	t_node *curr;
-
-	curr = a;
-	while (curr)
+	if (has_duplicate(a))
 	{
-		printf("%d\n", curr->value);
-		curr = curr->next;
+		write(2, "Error\n", 6);
+		free_stack(a);
+		exit (1);
 	}
+	if (is_sorted(a))
+	{
+		free_stack(a);
+		exit (1);
+	}
+}
+
+void	chooser(t_node	**a, t_node	**b, t_counter *c, t_config	cfg)
+{
+	double		disorder;
+
+	disorder = compute_disorder(*a);
+	if (cfg.strategy == SIMPLE)
+		simple_sort(a, b, c);
+	else if (cfg.strategy == MEDIUM)
+		chunk_sort(a, b, c);
+	else if (cfg.strategy == COMPLEX)
+		radix_sort(a, b, c);
+	else
+		adaptive_sort(a, b, c);
+	if (cfg.bench)
+		print_bench(disorder, cfg.strategy, c);
 }
 
 int	main(int ac, char **av)
 {
 	t_node		*a;
 	t_node		*b;
-	t_config	cfg;
 	t_counter	c;
+	t_config	cfg;
 	int			start;
-	double		disorder;
 
 	if (ac < 2)
 		return (0);
-
 	counter_init(&c);
 	b = NULL;
 	a = NULL;
@@ -45,38 +61,15 @@ int	main(int ac, char **av)
 	while (av[start])
 	{
 		if (init_stack(av[start], &a))
+		{
+			free_stack(a);
 			return (1);
+		}
 		start++;
 	}
-	//print_list(a);
+	control(a);
 	assign_index(a);
-
-	if (has_duplicate(a))
-	{
-		write(2, "Error\n", 6);
-		free_stack(a);
-		return (1);
-	}
-
-	if (is_sorted(a))
-	{
-		free_stack(a);
-		return (0);
-	}
-
-	disorder = compute_disorder(a);
-
-	if (cfg.strategy == SIMPLE)
-		simple_sort(&a, &b, &c);
-	else if (cfg.strategy == MEDIUM)
-		chunk_sort(&a, &b, &c);
-	else if (cfg.strategy == COMPLEX)
-		radix_sort(&a, &b, &c);
-	else
-		adaptive_sort(&a, &b, &c);
-
-	if (cfg.bench)
-		print_bench(disorder, cfg.strategy, &c);
+	chooser (&a, &b, &c, cfg);
 	free_stack(a);
 	free_stack(b);
 	return (0);

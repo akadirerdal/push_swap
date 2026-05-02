@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: sukonukc <sukonukc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 03:11:19 by aberdal           #+#    #+#             */
-/*   Updated: 2026/03/04 03:23:42 by aberdal          ###   ########.fr       */
+/*   Updated: 2026/05/02 02:55:01 by sukonukc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	pa(t_node **a, t_node **b, t_counter *counter)
 	*b = two->next;
 	two->next = one;
 	*a = two;
-	write(1,"pa\n", 3);
+	write(1, "pa\n", 3);
 	if (counter)
 	{
 		counter->pa++;

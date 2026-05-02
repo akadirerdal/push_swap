@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_r.c                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sukonukc <sukonukc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/04 04:39:41 by aberdal           #+#    #+#             */
-/*   Updated: 2026/04/23 18:09:12 by sukonukc         ###   ########.fr       */
+/*   Created: 2026/01/28 19:04:29 by sukonukc          #+#    #+#             */
+/*   Updated: 2026/05/02 02:49:10 by sukonukc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "push_swap.h"
 
-static void	swap_rotate(t_node **ab)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_node	*head;
-	t_node	*end;
+	unsigned char	*a;
+	size_t			i;
 
-	if (!ab || !*ab || !(*ab)->next)
-		return ;
-	head = *ab;
-	end = *ab;
-	while (end->next != NULL)
-		end = end->next;
-	*ab = head->next;
-	end->next = head;
-	head->next = NULL;
-}
-
-void	rr(t_node **a, t_node **b, t_counter *counter)
-{
-	swap_rotate(a);
-	swap_rotate(b);
-	write(1, "rr\n", 3);
-	if (counter)
+	if (nmemb == 0 && size == 0)
+		return (malloc(1));
+	if (size != 0 && nmemb > (size_t)-1 / size)
+		return (NULL);
+	a = malloc(nmemb * size);
+	if (!a)
+		return (NULL);
+	i = 0;
+	while (i < nmemb * size)
 	{
-		counter->rr++;
-		counter->total++;
+		a[i] = 0;
+		i++;
 	}
+	return (a);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: sukonukc <sukonukc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 20:08:45 by aberdal           #+#    #+#             */
-/*   Updated: 2026/05/01 04:57:03 by aberdal          ###   ########.fr       */
+/*   Updated: 2026/05/02 02:51:44 by sukonukc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int 	get_max_bitss(t_node *a)
+static int	get_max_bitss(t_node *a)
 {
 	int	max;
 	int	bits;

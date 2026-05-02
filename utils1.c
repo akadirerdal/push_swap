@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: sukonukc <sukonukc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 01:12:10 by aberdal           #+#    #+#             */
-/*   Updated: 2026/05/01 04:50:42 by aberdal          ###   ########.fr       */
+/*   Updated: 2026/05/02 02:53:25 by sukonukc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	is_sorted(t_node *a)
 	}
 	return (1);
 }
+
 int	has_duplicate(t_node *a)
 {
 	t_node	*i;

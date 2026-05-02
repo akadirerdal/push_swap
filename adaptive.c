@@ -21,7 +21,6 @@ void	sort_3(t_node **a, t_counter *c)
 	first = (*a)->value;
 	second = (*a)->next->value;
 	third = (*a)->next->next->value;
-
 	if (first > second && second < third && first < third)
 		sa(a, c);
 	else if (first > second && second > third)
@@ -38,6 +37,16 @@ void	sort_3(t_node **a, t_counter *c)
 	}
 	else if (first < second && second > third && first > third)
 		rra(a, c);
+}
+
+void	big_sorts(double d, t_node **a, t_node **b, t_counter *c)
+{
+	if (d < 0.2)
+		simple_sort(a, b, c);
+	else if (d < 0.5)
+		chunk_sort(a, b, c);
+	else
+		radix_sort(a, b, c);
 }
 
 void	adaptive_sort(t_node **a, t_node **b, t_counter *c)
@@ -65,10 +74,5 @@ void	adaptive_sort(t_node **a, t_node **b, t_counter *c)
 		return ;
 	}
 	d = compute_disorder(*a);
-	if (d < 0.2)
-		simple_sort(a, b, c);
-	else if (d < 0.5)
-		chunk_sort(a, b, c);
-	else
-		radix_sort(a, b, c);
+	big_sorts(d, a, b, c);
 }

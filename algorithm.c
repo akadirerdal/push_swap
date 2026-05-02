@@ -12,42 +12,46 @@
 
 #include "push_swap.h"
 
-double compute_disorder(t_node *a)
+double	compute_disorder(t_node *a)
 {
-    int mistakes = 0;
-    int total = 0;
+	int		mistakes;
+	int		total;
+	t_node	*tmp;
 
-    while (a)
-    {
-        t_node *tmp = a->next;
-        while (tmp)
-        {
-            total++;
-            if (a->value > tmp->value)
-                mistakes++;
-            tmp = tmp->next;
-        }
-        a = a->next;
-    }
-    return ((double)mistakes / total);
+	mistakes = 0;
+	total = 0;
+	while (a)
+	{
+		tmp = a->next;
+		while (tmp)
+		{
+			total++;
+			if (a->value > tmp->value)
+				mistakes++;
+			tmp = tmp->next;
+		}
+		a = a->next;
+	}
+	return ((double)mistakes / total);
 }
 
-void simple_sort(t_node **a, t_node **b, t_counter *c)
+void	simple_sort(t_node **a, t_node **b, t_counter *c)
 {
-    while (*a)
-    {
-        int min = find_min(*a);
-        int pos = get_pos(*a, min);
+	int	min;
+	int	pos;
 
-        if (pos <= lst_size(*a) / 2)
-            while (pos-- > 0)
-                ra(a, c);
-        else
-            while (pos++ < lst_size(*a))
-                rra(a, c);
-
-        pb(a, b, c);
-    }
-    while (*b)
-        pa(a, b, c);
+	while (*a)
+	{
+		min = find_min(*a);
+		pos = get_pos(*a, min);
+		if (pos <= lst_size(*a) / 2)
+			while (pos-- > 0)
+				ra(a, c);
+		else
+			while (pos++ < lst_size(*a))
+				rra(a, c);
+		pb(a, b, c);
+	}
+	while (*b)
+		pa(a, b, c);
 }

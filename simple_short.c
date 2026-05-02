@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_short.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberdal <aberdal@student.42kocaeli.com.tr>  #+#  +:+       +#+       */
+/*   By: sukonukc <sukonukc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-04-12 18:26:36 by aberdal           #+#    #+#             */
-/*   Updated: 2026-04-12 18:26:36 by aberdal          ###   ########.fr       */
+/*   Created: 2026/04/12 18:26:36 by aberdal           #+#    #+#             */
+/*   Updated: 2026/05/02 02:52:35 by sukonukc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

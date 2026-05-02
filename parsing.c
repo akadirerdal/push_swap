@@ -21,19 +21,33 @@ int	parse_flags(int ac, char **av, t_config *cfg)
 	cfg->bench = 0;
 	while (i < ac)
 	{
-		if (strncmp(av[i], "--bench", 7) == 0)
+		if (ft_strncmp(av[i], "--bench", 7) == 0)
 			cfg->bench = 1;
-		else if (strncmp(av[i], "--simple", 8) == 0)
+		else if (ft_strncmp(av[i], "--simple", 8) == 0)
 			cfg->strategy = SIMPLE;
-		else if (strncmp(av[i], "--medium", 8) == 0)
+		else if (ft_strncmp(av[i], "--medium", 8) == 0)
 			cfg->strategy = MEDIUM;
-		else if (strncmp(av[i], "--complex", 9) == 0)
+		else if (ft_strncmp(av[i], "--complex", 9) == 0)
 			cfg->strategy = COMPLEX;
-		else if (strncmp(av[i], "--adaptive", 10) == 0)
+		else if (ft_strncmp(av[i], "--adaptive", 10) == 0)
 			cfg->strategy = ADAPTIVE;
 		else
 			break ;
 		i++;
 	}
 	return (i);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n && (s1[i] || s2[i]))
+	{
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
 }

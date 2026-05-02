@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sukonukc <sukonukc@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/05 13:32:26 by sukonukc          #+#    #+#             */
-/*   Updated: 2026/05/02 02:47:43 by sukonukc         ###   ########.fr       */
+/*   Created: 2026/02/05 13:32:26 by aberdal           #+#    #+#             */
+/*   Updated: 2026/05/02 21:39:35 by aberdal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,13 @@ static void	*free_all(char **str)
 {
 	int	i;
 
-	i = -1;
-	while (str[++i])
+	i = 0;
+	while (str[i])
 	{
-		if (str[i])
-			free(str[i]);
+		free(str[i]);
+		i++;
 	}
-	if (str)
-		free(str);
+	free(str);
 	return (NULL);
 }
 
@@ -82,6 +81,7 @@ char	**ft_split(char const *s, char c)
 	char	**str;
 	int		i;
 	int		w;
+	int		len;
 
 	if (!s)
 		return (NULL);
@@ -94,10 +94,12 @@ char	**ft_split(char const *s, char c)
 	{
 		if (s[i] != c)
 		{
-			str[w++] = copy(s, i, wlen(s, c, i));
-			if (str[w - 1] == NULL)
+			len = wlen(s, c, i);
+			str[w] = copy(s, i, len);
+			if (!str[w])
 				return (free_all(str));
-			i += wlen(s, c, i);
+			i += len;
+			w++;
 		}
 		else
 			i++;

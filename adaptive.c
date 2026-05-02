@@ -6,7 +6,7 @@
 /*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 05:08:08 by aberdal           #+#    #+#             */
-/*   Updated: 2026/05/01 05:08:08 by aberdal          ###   ########.fr       */
+/*   Updated: 2026/05/02 21:19:34 by aberdal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	sort_3(t_node **a, t_counter *c)
 		rra(a, c);
 }
 
-void	big_sorts(double d, t_node **a, t_node **b, t_counter *c)
+static void	big_sorts(double d, t_node **a, t_node **b, t_counter *c)
 {
 	if (d < 0.2)
 		simple_sort(a, b, c);

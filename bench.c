@@ -6,9 +6,10 @@
 /*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 14:51:20 by aberdal           #+#    #+#             */
-/*   Updated: 2026/05/02 14:51:20 by aberdal          ###   ########.fr       */
+/*   Updated: 2026/05/02 21:19:34 by aberdal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	put_str(int fd, const char *s)
@@ -19,15 +20,16 @@ void	put_str(int fd, const char *s)
 
 void	put_nbr(int fd, int n)
 {
-
 	char	buf[12];
-	int		i = 0;
-	long	nb = n;
+	int		i;
+	long	nb;
 
+	i = 0;
+	nb = n;
 	if (nb == 0)
 	{
 		write(fd, "0", 1);
-		return;
+		return ;
 	}
 	if (nb < 0)
 	{
@@ -45,16 +47,20 @@ void	put_nbr(int fd, int n)
 
 void	put_double_percent(int fd, double d)
 {
-	int val = (int)(d * 10000);
-	int int_part = val / 100;
-	int frac = val % 100;
+	int	val;
+	int	int_part;
+	int	frac;
 
+	val = (int)(d * 10000);
+	int_part = val / 100;
+	frac = val % 100;
 	put_nbr(fd, int_part);
 	write(fd, ".", 1);
 	if (frac < 10)
 		write(fd, "0", 1);
 	put_nbr(fd, frac);
 }
+
 const char	*get_complexity(t_strategy s, double d)
 {
 	if (s == SIMPLE)

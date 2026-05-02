@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sukonukc <sukonukc@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 19:04:29 by sukonukc          #+#    #+#             */
-/*   Updated: 2026/05/02 02:49:10 by sukonukc         ###   ########.fr       */
+/*   Created: 2026/01/28 19:04:29 by aberdal           #+#    #+#             */
+/*   Updated: 2026/05/02 21:19:34 by aberdal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "push_swap.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)

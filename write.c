@@ -6,7 +6,7 @@
 /*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 14:57:43 by aberdal           #+#    #+#             */
-/*   Updated: 2026/05/02 21:19:34 by aberdal          ###   ########.fr       */
+/*   Updated: 2026/05/02 14:57:43 by aberdal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ void	print_bench_ops(t_counter *c)
 {
 	put_str(2, "[bench] sa:");
 	put_nbr(2, c->sa);
-	put_str(2, "\n");
-	put_str(2, "[bench] pa:");
+	put_str(2, " sb: 0");
+	put_str(2, " ss: 0");
+	put_str(2, " pa:");
 	put_nbr(2, c->pa);
 	put_str(2, " pb:");
 	put_nbr(2, c->pb);
@@ -55,10 +56,11 @@ void	print_bench_ops(t_counter *c)
 	put_nbr(2, c->ra);
 	put_str(2, " rb:");
 	put_nbr(2, c->rb);
-	put_str(2, "\n");
-	put_str(2, "[bench] rra:");
+	put_str(2, " rr: 0");
+	put_str(2, " rra:");
 	put_nbr(2, c->rra);
 	put_str(2, " rrb:");
 	put_nbr(2, c->rrb);
+	put_str(2, " rrr: 0");
 	put_str(2, "\n");
 }

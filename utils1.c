@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: sukonukc <sukonukc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 01:12:10 by aberdal           #+#    #+#             */
-/*   Updated: 2026/05/02 21:19:34 by aberdal          ###   ########.fr       */
+/*   Updated: 2026/05/02 02:53:25 by sukonukc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	isnumber(char *str)
 
 long	ft_atol(const char *str)
 {
-	long	res;
-	int		sing;
-	int		i;
+	int long	res;
+	int			sing;
+	int			i;
 
 	i = 0;
 	res = 0;

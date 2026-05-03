@@ -1,164 +1,266 @@
-# push_swap
-
-> **42 Kocaeli** — A sorting algorithm project using two stacks and a limited set of operations.
+*This project has been created as part of the 42 curriculum by aberdal , sukonukc*
 
 ---
 
-## About
+# 📌 push_swap
 
-**push_swap** sorts a stack of integers using two stacks (`a` and `b`) and a restricted set of operations, printing the sequence of moves to standard output. The goal is to sort with as few operations as possible.
+## 📖 Açıklama
 
----
+`push_swap`, iki stack (`a` ve `b`) kullanarak bir sayı listesini **minimum operasyon sayısıyla sıralamayı** amaçlayan algoritmik bir projedir.
 
-## Operations
+Bu projede amaç sadece sıralamak değil, **mümkün olan en az hamleyle sıralamaktır**. Bu nedenle algoritma seçimi ve optimizasyon kritik öneme sahiptir.
 
-| Operation | Description |
-|-----------|-------------|
-| `sa` | Swap the top 2 elements of stack **a** |
-| `sb` | Swap the top 2 elements of stack **b** |
-| `ss` | `sa` and `sb` simultaneously |
-| `pa` | Push top of stack **b** to top of stack **a** |
-| `pb` | Push top of stack **a** to top of stack **b** |
-| `ra` | Rotate stack **a** upward (first element becomes last) |
-| `rb` | Rotate stack **b** upward |
-| `rr` | `ra` and `rb` simultaneously |
-| `rra` | Reverse rotate stack **a** (last element becomes first) |
-| `rrb` | Reverse rotate stack **b** |
-| `rrr` | `rra` and `rrb` simultaneously |
+Program, verilen sayıları sıralamak için gerekli olan işlemleri standart output’a yazdırır.
+
+Projeye göre maliyet, klasik zaman karmaşıklığı değil, **üretilen operasyon sayısıdır** .
 
 ---
 
-## Usage
+# ⚙️ Kullanılabilir Operasyonlar
 
-```bash
+| Operasyon | Açıklama                  |
+| --------- | ------------------------- |
+| sa / sb   | İlk iki elemanı swap eder |
+| ss        | sa + sb                   |
+| pa / pb   | Stackler arası push       |
+| ra / rb   | Yukarı döndür             |
+| rr        | ra + rb                   |
+| rra / rrb | Aşağı döndür              |
+| rrr       | rra + rrb                 |
+
+---
+
+# 🎯 Amaç
+
+* Algoritma karmaşıklığını öğrenmek
+* Minimum operasyon üretmek
+* Input’a göre doğru algoritmayı seçmek
+* Edge-case ve hata kontrolü yapmak
+
+---
+
+# 🧠 Kullanılan Algoritmalar
+
+Projede zorunlu olarak 4 farklı strateji implement edilmiştir :
+
+---
+
+## 🔹 1. Simple (O(n²))
+
+Kullanım:
+
+* Küçük inputlar
+* Neredeyse sıralı diziler
+
+Teknik:
+
+* small sort (2–5 eleman)
+* basit karşılaştırma tabanlı yaklaşım
+
+---
+
+## 🔹 2. Medium (O(n√n))
+
+Teknik:
+
+* chunk (parça) mantığı
+* veri √n parçaya bölünür
+* stack b’ye aktarılır ve geri toplanır
+
+---
+
+## 🔹 3. Complex (O(n log n))
+
+Teknik:
+
+* radix sort (bit tabanlı)
+* indexleme kullanılır
+* büyük inputlarda stabil ve hızlıdır
+
+---
+
+## 🔹 4. Adaptive (Dinamik Algoritma)
+
+Bu algoritma input’a göre hangi yöntemin kullanılacağını belirler.
+
+---
+
+# 📊 Disorder (Bozukluk) Hesabı
+
+Disorder, dizinin ne kadar sıralı olmadığını ölçer:
+
+```text id="2q7xeh"
+disorder = yanlış çift sayısı / toplam çift sayısı
+```
+
+* 0 → tamamen sıralı
+* 1 → tamamen ters
+
+Subject’te verilen mantık :
+
+```c id="aq5t1c"
+for i:
+  for j:
+    if a[i] > a[j]:
+        mistakes++
+```
+
+---
+
+# 📈 Adaptive Algoritma Mantığı
+
+```c id="y02bxh"
+if (size <= 5)
+    small_sort();
+else if (disorder < 0.2)
+    simple_sort();
+else if (disorder < 0.5)
+    chunk_sort();
+else
+    radix_sort();
+```
+
+---
+
+# 🧱 Proje Yapısı
+
+```text id="mq8o7t"
+src/
+├── main.c
+├── parsing.c
+├── adaptive.c
+├── sort_small.c
+├── radix.c
+├── chunk.c
+├── operations/
+│   ├── swap.c
+│   ├── push.c
+│   ├── rotate.c
+│   └── reverse_rotate.c
+├── bench.c
+├── counter.c
+├── index.c
+```
+
+---
+
+# 🧩 Veri Yapıları
+
+```c id="8q6klw"
+typedef struct s_node
+{
+    int             value;
+    int             index;
+    struct s_node   *next;
+} t_node;
+
+typedef struct s_counter
+{
+    int sa, sb, ss;
+    int pa, pb;
+    int ra, rb, rr;
+    int rra, rrb, rrr;
+    int total;
+} t_counter;
+```
+
+---
+
+# 🚀 Kullanım
+
+## Derleme
+
+```bash id="d8l44g"
 make
-./push_swap [numbers]
-```
-
-### Examples
-
-```bash
-./push_swap 5 4 3 2 1
-./push_swap "5 4 3 2 1"
-./push_swap 42 7 -3 100 0
-```
-
-If the input is already sorted or only 1 number is given, the program outputs nothing.
-
----
-
-## Error Handling
-
-The program writes `Error\n` to stderr and exits with status `1` if:
-- A non-integer argument is given
-- A number exceeds `INT_MAX` or is below `INT_MIN`
-- Duplicate values are present
-
----
-
-## Algorithms
-
-The program selects an algorithm adaptively based on input size and disorder level:
-
-| Strategy | Trigger | Complexity |
-|----------|---------|------------|
-| **Simple** (selection sort) | `--simple` flag or small disorder | O(n²) |
-| **Chunk sort** | `--medium` flag or medium disorder | O(n √n) |
-| **Radix sort** (LSD, index-based) | `--complex` flag or high disorder | O(n log n) |
-| **Adaptive** *(default)* | Auto-selects based on disorder metric | varies |
-
-### Size shortcuts
-- **2 elements** → single swap if needed
-- **3 elements** → direct 3-element sort (≤ 2 operations)
-- **≤ 5 elements** → sort\_5 using push to b + sort\_3 + push back
-
----
-
-## Optional Flags
-
-These flags can be placed **before** the list of numbers:
-
-```bash
-./push_swap --simple  5 4 3 2 1    # Force simple sort
-./push_swap --medium  5 4 3 2 1    # Force chunk sort
-./push_swap --complex 5 4 3 2 1    # Force radix sort
-./push_swap --adaptive 5 4 3 2 1   # Force adaptive (default)
-./push_swap --bench   5 4 3 2 1    # Print benchmark info to stderr
 ```
 
 ---
 
-## Benchmark Output (--bench)
+## Çalıştırma
 
+```bash id="sztzpg"
+./push_swap 3 2 1
 ```
-[bench] disorder: 87.50%
+
+---
+
+## Algoritma seçimi
+
+```bash id="4z5cde"
+./push_swap --simple 3 2 1
+./push_swap --medium 3 2 1
+./push_swap --complex 3 2 1
+./push_swap --adaptive 3 2 1
+```
+
+---
+
+# 📊 Benchmark (Bench Mode)
+
+```bash id="s7r2pm"
+./push_swap --bench 3 2 1
+```
+
+Örnek çıktı:
+
+```text id="skx67s"
+[bench] disorder: 100.00%
 [bench] strategy: Adaptive (O(n log n))
-[bench] total_ops: 1032
-[bench] sa:12
-[bench] pa:256 pb:256
-[bench] ra:178 rb:145
-[bench] rra:87 rrb:98
+[bench] total_ops: 10
+[bench] sa:1 sb:0 ss:0
+[bench] pa:3 pb:3
+[bench] ra:2 rb:0 rr:0
+[bench] rra:1 rrb:0 rrr:0
 ```
 
 ---
 
-## Performance Targets
+# ⚠️ Hata Yönetimi
 
-| Input size | Target (pass) | Target (full score) |
-|-----------|--------------|---------------------|
-| 3 numbers | ≤ 3 ops | ≤ 3 ops |
-| 5 numbers | ≤ 12 ops | ≤ 12 ops |
-| 100 numbers | ≤ 1500 ops | ≤ 700 ops |
-| 500 numbers | ≤ 11500 ops | ≤ 5500 ops |
+Program şu durumlarda `"Error\n"` yazdırır:
 
----
-
-## File Structure
-
-```
-.
-├── Makefile
-├── push_swap.h          # Header: types, prototypes
-├── main.c               # Entry point, argument handling
-├── parsing.c            # Flag parsing, ft_strncmp
-├── counter.c            # init_stack, counter_init, free_stack
-├── lnklst.c             # Linked list: new_node, add_back, lst_size
-├── utils1.c             # isnumber, ft_atol, is_sorted, has_duplicate
-├── index.c              # assign_index (coordinate compression)
-├── adaptive.c           # adaptive_sort, sort_3
-├── algorithm.c          # compute_disorder, simple_sort
-├── chunk.c              # chunk_sort
-├── radix.c              # radix_sort (LSD bit-by-bit)
-├── sort_small.c         # sort_5
-├── simple_short.c       # find_min, get_pos
-├── swap_a.c             # sa
-├── swap_b.c             # sb, ss
-├── push_a.c             # pa
-├── push_b.c             # pb
-├── rotate_a.c           # ra
-├── rotate_b.c           # rb
-├── rotate_both.c        # rr, rrr
-├── reverse_rotate_a.c   # rra
-├── reverse_rotate_b.c   # rrb
-├── bench.c              # Output helpers: put_str, put_nbr, put_double_percent
-├── write.c              # Benchmark printing functions
-├── ft_split.c           # ft_split
-└── ft_calloc.c          # ft_calloc
-```
+* integer olmayan input
+* duplicate değerler
+* int sınırını aşan değerler
 
 ---
 
-## Build
+# 📈 Performans Hedefleri
 
-```bash
-make        # Build push_swap
-make clean  # Remove object files
-make fclean # Remove objects + binary
-make re     # Full rebuild
-```
+Subject’e göre :
+
+| Eleman | Geçme  | İyi   | Mükemmel |
+| ------ | ------ | ----- | -------- |
+| 100    | <2000  | <1500 | <700     |
+| 500    | <12000 | <8000 | <5500    |
 
 ---
 
-## Author
+# 🔍 Algoritma Seçim Mantığı
 
-**aberdal** — aberdal@student.42kocaeli.com.tr
+* Küçük input → özel optimize
+* Orta → chunk
+* Büyük → radix
+* Adaptive → en uygun algoritmayı seçer
+
+---
+
+# 🤖 AI Kullanımı
+
+AI şu amaçlarla kullanıldı:
+
+* hata ayıklama
+* algoritma tasarımı
+* test üretimi
+* kod organizasyonu
+
+Tüm çıktılar manuel olarak kontrol edilmiştir.
+
+---
+
+# 📚 Kaynaklar
+
+* 42 push_swap subject
+* Big-O notasyonu
+* Radix sort dokümantasyonu
+* Sorting algoritmaları

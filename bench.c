@@ -6,10 +6,9 @@
 /*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 14:51:20 by aberdal           #+#    #+#             */
-/*   Updated: 2026/05/02 21:19:34 by aberdal          ###   ########.fr       */
+/*   Updated: 2026/05/02 14:51:20 by aberdal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
 void	put_str(int fd, const char *s)

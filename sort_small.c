@@ -6,7 +6,7 @@
 /*   By: sukonukc <sukonukc@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 21:47:51 by aberdal           #+#    #+#             */
-/*   Updated: 2026/05/02 02:52:55 by sukonukc         ###   ########.fr       */
+/*   Updated: 2026/05/02 23:29:43 by sukonukc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	sort_5(t_node **a, t_node **b, t_counter *c)
 		min = find_min(*a);
 		pos = get_pos(*a, min);
 		if (pos == 0)
-			pb(a, b, NULL);
+			pb(a, b, c);
 		else if (pos <= lst_size(*a) / 2)
-			ra(a, NULL);
+			ra(a, c);
 		else
-			rra(a, NULL);
+			rra(a, c);
 	}
 	sort_3(a, c);
 	while (*b)
-		pa(a, b, NULL);
+		pa(a, b, c);
 }

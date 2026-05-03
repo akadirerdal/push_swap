@@ -6,7 +6,7 @@
 /*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 05:08:08 by aberdal           #+#    #+#             */
-/*   Updated: 2026/05/02 21:19:34 by aberdal          ###   ########.fr       */
+/*   Updated: 2026/05/01 05:08:08 by aberdal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	sort_3(t_node **a, t_counter *c)
 		rra(a, c);
 }
 
-static void	big_sorts(double d, t_node **a, t_node **b, t_counter *c)
+void	big_sorts(double d, t_node **a, t_node **b, t_counter *c)
 {
 	if (d < 0.2)
 		simple_sort(a, b, c);
@@ -51,28 +51,14 @@ static void	big_sorts(double d, t_node **a, t_node **b, t_counter *c)
 
 void	adaptive_sort(t_node **a, t_node **b, t_counter *c)
 {
-	int		size;
-	double	d;
+	int	size;
 
 	size = lst_size(*a);
-	if (size <= 1)
-		return ;
-	if (size == 2)
-	{
-		if ((*a)->value > (*a)->next->value)
-			sa(a, c);
-		return ;
-	}
-	if (size == 3)
-	{
-		sort_3(a, c);
-		return ;
-	}
+	assign_index(*a);
 	if (size <= 5)
-	{
-		sort_5(a, b, c);
-		return ;
-	}
-	d = compute_disorder(*a);
-	big_sorts(d, a, b, c);
+		simple_sort(a, b, c);
+	else if (size <= 100)
+		radix_sort(a, b, c);
+	else
+		radix_sort(a, b, c);
 }

@@ -6,7 +6,7 @@
 /*   By: aberdal <aberdal@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 00:34:18 by aberdal           #+#    #+#             */
-/*   Updated: 2026/05/02 21:19:34 by aberdal          ###   ########.fr       */
+/*   Updated: 2026/05/01 00:34:18 by aberdal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,16 @@ void	simple_sort(t_node **a, t_node **b, t_counter *c)
 	}
 	while (*b)
 		pa(a, b, c);
+}
+
+void	counter_init(t_counter *c)
+{
+	c->sa = 0;
+	c->pa = 0;
+	c->pb = 0;
+	c->ra = 0;
+	c->rb = 0;
+	c->rra = 0;
+	c->rrb = 0;
+	c->total = 0;
 }

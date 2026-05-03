@@ -7,9 +7,9 @@ SRCS = main.c parsing.c lnklst.c \
        push_a.c push_b.c \
        swap_a.c \
        rotate_a.c rotate_b.c counter.c adaptive.c \
-       reverse_rotate_a.c reverse_rotate_b.c algorithm.c write.c bench.c \
-       simple_short.c utils1.c index.c radix.c sort_small.c chunk.c \
-       ft_split.c ft_calloc.c
+       reverse_rotate_a.c reverse_rotate_b.c algorithm.c write.c bench.c\
+       simple_short.c utils1.c index.c radix.c sort_small.c chunk.c ft_split.c ft_calloc.c \
+	   
 
 OBJS = $(SRCS:.c=.o)
 
